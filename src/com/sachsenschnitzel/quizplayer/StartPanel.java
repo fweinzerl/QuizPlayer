@@ -12,34 +12,39 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 /**
  *
  * @author schnitzel
  */
-public class StartFrame extends JFrame{
-    public StartFrame(){
+public class StartPanel extends JPanel{
+    private Container parent;
+    
+    public StartPanel(Container parent){
+        this.parent = parent;
         final int rows = 7;
         
-        Container c = super.getContentPane();
-        JPanel myPane = new JPanel();
+        //JPanel myPane = new JPanel();
         GridLayout gl = new GridLayout(rows, 1);
-        myPane.setLayout(gl);
+        this.setLayout(gl);
         //myPane.setBackground(Color.RED);
-        c.add(myPane);
+        //c.add(myPane);
         
         JPanel[] grid = new JPanel[rows];
         for(int i = 0; i < grid.length; i++){
             grid[i] = new JPanel();
             //grid[i].setBackground(new Color(i*1.0f/rows, i*1.0f/rows, i*1.0f/rows));
-            myPane.add(grid[i]);
+            this.add(grid[i]);
         }
         
         JLabel title = new JLabel("Oag schweres Quiz!");
@@ -69,9 +74,18 @@ public class StartFrame extends JFrame{
         btnStartQuiz.setAlignmentX(CENTER_ALIGNMENT);
         grid[6].add(btnStartQuiz);
         
-        super.setVisible(true);
+        btnStartQuiz.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    parent.remove(0);
+                    parent.add(new CategoriesPanel());
+                    SwingUtilities.updateComponentTreeUI(parent);
+                }
+            });
+        
+        /*super.setVisible(true);
         super.setSize(800, 600);
         super.setLocationRelativeTo(null);
-        super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        super.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
     }
 }
