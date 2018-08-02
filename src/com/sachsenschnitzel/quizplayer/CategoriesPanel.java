@@ -9,50 +9,85 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
 
 /**
  *
  * @author schnitzel
  */
 public class CategoriesPanel extends JPanel{
-    public CategoriesPanel(){
+    private Container parent;
+    
+    public CategoriesPanel(Container parent){
+        this.parent = parent;
         final int rows = 3;
         final int cols = 3;
         final int gap = 30;
         
+        JPanel backPane = new JPanel(); //ouch
+        backPane.setLayout(new FlowLayout(FlowLayout.TRAILING));
         JPanel mainPane = new JPanel();
         mainPane.setLayout(new GridLayout(rows, cols, gap, gap));
         mainPane.setBorder(BorderFactory.createEmptyBorder(gap, gap, gap, gap));
         JPanel scorePane = new JPanel();
         scorePane.setLayout(new GridLayout(1, 2));
-        this.setLayout(new BorderLayout());
-        this.add(mainPane, BorderLayout.CENTER);
-        this.add(scorePane, BorderLayout.SOUTH);
+        super.setLayout(new BorderLayout());
+        backPane.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        scorePane.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+        super.add(backPane, BorderLayout.NORTH);
+        super.add(mainPane, BorderLayout.CENTER);
+        super.add(scorePane, BorderLayout.SOUTH);
         
+        
+        JButton btnBack = new JButton("X");
+        btnBack.setBackground(new Color(0.9f, 0.1f, 0.1f));
+        backPane.add(btnBack);
+        btnBack.addActionListener((ActionEvent e) -> {
+                Object[] options = {"Quit",
+                                    "Stay"};
+                int n = JOptionPane.showOptionDialog(parent,
+                    "Really Quit?",
+                    "A Simple Question",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+                if(n==0){
+                    parent.remove(0);
+                    parent.add(new StartPanel(parent));
+                    SwingUtilities.updateComponentTreeUI(parent);
+                }
+            });
         
         JButton[] grid = new JButton[rows*cols];
         for(int i = 0; i < grid.length; i++){
             grid[i] = new JButton("<html><font size='18' color='white'>cat "+i+"</font></html>");
             grid[i].setBackground(new Color(1-i*1.0f/grid.length, 0.1f, i*1.0f/grid.length));
             mainPane.add(grid[i]);
+            grid[i].addActionListener((ActionEvent e) -> {
+                parent.remove(0);
+                parent.add(new QuestionPanel(parent));
+                SwingUtilities.updateComponentTreeUI(parent);
+            });
         }
         
         JPanel scorePaneLeft = new JPanel();
         JPanel scorePaneRight = new JPanel();
         scorePaneLeft.setLayout(new FlowLayout(FlowLayout.LEADING));
         scorePaneRight.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        scorePaneLeft.add(new JLabel("<html><font size='20' color='red'>left</font></html>"));
-        scorePaneRight.add(new JLabel("<html><font size='20' color='blue'>right</font></html>"));
+        scorePaneLeft.add(new JLabel("<html><font size='18' color='red'>Team 1</font></html>"));
+        scorePaneRight.add(new JLabel("<html><font size='18' color='blue'>Team 2</font></html>"));
         scorePane.add(scorePaneLeft);
         scorePane.add(scorePaneRight);
-        
-        //super.setVisible(true);
     }
 }

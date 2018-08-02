@@ -6,22 +6,17 @@
 package com.sachsenschnitzel.quizplayer;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 
 /**
  *
@@ -36,7 +31,7 @@ public class StartPanel extends JPanel{
         
         //JPanel myPane = new JPanel();
         GridLayout gl = new GridLayout(rows, 1);
-        this.setLayout(gl);
+        super.setLayout(gl);
         //myPane.setBackground(Color.RED);
         //c.add(myPane);
         
@@ -44,10 +39,10 @@ public class StartPanel extends JPanel{
         for(int i = 0; i < grid.length; i++){
             grid[i] = new JPanel();
             //grid[i].setBackground(new Color(i*1.0f/rows, i*1.0f/rows, i*1.0f/rows));
-            this.add(grid[i]);
+            super.add(grid[i]);
         }
         
-        JLabel title = new JLabel("Oag schweres Quiz!");
+        JLabel title = new JLabel(" Oag schweres Quiz ");
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 30));
         title.setBackground(new Color(0.6f, 0.6f, 0.9f));
         title.setOpaque(true);
@@ -74,14 +69,11 @@ public class StartPanel extends JPanel{
         btnStartQuiz.setAlignmentX(CENTER_ALIGNMENT);
         grid[6].add(btnStartQuiz);
         
-        btnStartQuiz.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    parent.remove(0);
-                    parent.add(new CategoriesPanel());
-                    SwingUtilities.updateComponentTreeUI(parent);
-                }
-            });
+        btnStartQuiz.addActionListener((ActionEvent e) -> {
+            parent.remove(0);
+            parent.add(new CategoriesPanel(parent));
+            SwingUtilities.updateComponentTreeUI(parent);
+        });
         
         /*super.setVisible(true);
         super.setSize(800, 600);

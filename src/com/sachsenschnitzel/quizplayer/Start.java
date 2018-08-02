@@ -7,8 +7,9 @@ public class Start{
     public static void main(String[] args){
         JFrame frame = new JFrame();
         Container c = frame.getContentPane();
-        c.add(new StartPanel(c));
+        c.add(new QuestionPanel(c));
         
+        frame.setTitle("QuizPlayer");
         frame.setVisible(true);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
