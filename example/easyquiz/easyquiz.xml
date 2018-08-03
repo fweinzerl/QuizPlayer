@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+	<category name="Naturwissenschaften">
+		<question text="Was ist kein  Bestandteil von DNA?">
+			<answer text="Traubenzucker"/>
+			<answer text="Phosphat"/>
+			<answer text="Adenin"/>
+			<answer text="Thymin"/>
+		</question>
+	</category>
+	<category name="Kunst">
+		<question text="Von wem stammt das Werk 'El Sol'?">
+			<answer text="Joan Miro"/>
+			<answer text="keine Ahnung"/>
+			<answer text="Gustav Klimt"/>
+			<answer text="Pablo Picasso"/>
+	</category>
+	<category name="Geschichte">
+		<question text="Was war im Kult der Pythagoräer verboten?">
+			<answer text="Bohnen essen"/>
+			<answer text="Ohne Zirkel aufs Klo gehen"/>
+			<answer text="Handstand machen"/>
+			<answer text="Barfuß gehen"/>
+	</category>
+	<category name="Geographie">
+		<question text="Welcher Fluss entspringt in Radstätter Tauern?">
+			<answer text="Enns"/>
+			<answer text="Ens"/>
+			<answer text="Enz"/>
+			<answer text="Ems"/>
+	</category>
+	<category name="Sport">
+		<question text="Was hat Florian im Gymnasium nie gelernt?">
+			<answer text="Köpfler"/>
+			<answer text="Bruchrechnen"/>
+			<answer text="Purzelbaum"/>
+			<answer text="Winkelfunktionen"/>
+	</category>
+	<category name="Musik">
+		<question text="Welches Lied stammt nicht von Falco?">
+			<answer text="Bringt mir die Post schon ins Spital"/>
+			<answer text="Mutter, der Mann mit dem Koks ist da"/>
+			<answer text="Out Of the Dark"/>
+			<answer text="Ganz Wien"/>
+	</category>
+	<category name="Spiele">
+		<question text="Welches dieser Spiele ist das beste?">
+			<answer text="The Stanley Parable"/>
+			<answer text="Fortnite"/>
+			<answer text="Call Of Duty: Black Ops 4"/>
+			<answer text="Crash Of The Titans"/>
+	</category>
+	<category name="Informatik">
+		<question text="1024 Byte sind ...?">
+			<answer text="1 Kibibyte"/>
+			<answer text="1 Kilobyte"/>
+			<answer text="1 Megabyte"/>
+			<answer text="1 Gigabyte"/>
+	</category>
+	<category name="TV">
+		<question text="Wie heißt die gelbe Hauptrolle aus Adventure Time?">
+			<answer text="Jake"/>
+			<answer text="Joshua"/>
+			<answer text="Jo"/>
+			<answer text="Jeremia"/>
+	</category>
+</quiz>

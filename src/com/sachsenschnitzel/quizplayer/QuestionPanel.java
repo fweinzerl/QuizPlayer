@@ -5,6 +5,7 @@
  */
 package com.sachsenschnitzel.quizplayer;
 
+import com.sachsenschnitzel.quizplayer.Quiz.Question;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -20,10 +21,13 @@ import javax.swing.border.BevelBorder;
  * @author schnitzel
  */
 public class QuestionPanel extends JPanel{
-    private Container parent;
+    //private Container parent;
+    private Question question;
     
-    public QuestionPanel(Container parent){
-        this.parent = parent;
+    public QuestionPanel(Question question){
+        //this.parent = parent;
+        this.question = question;
+        String[] q_and_as = question.getQuestionAndAnswers();
         final int sections = 4;
         final int rows = 2;
         final int cols = 2;
@@ -40,7 +44,7 @@ public class QuestionPanel extends JPanel{
         }
         
         JTextArea title = new JTextArea(
-                "Oag schwere Frage, die vielleicht lang is und deshalb über mehrere Zeilen geht", 
+                q_and_as[0], 
                 1, 
                 18);
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 30));
@@ -58,7 +62,7 @@ public class QuestionPanel extends JPanel{
         
         JButton[] answers = new JButton[rows*cols];
         for(int i = 0; i < answers.length; i++){
-            answers[i] = new JButton("answer "+i);
+            answers[i] = new JButton(q_and_as[i+1]);
             answers[i].setBackground(new Color(0.1f, 1-i*1.0f/answers.length, i*1.0f/answers.length));
             column[2].add(answers[i]);
         }

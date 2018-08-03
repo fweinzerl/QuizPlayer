@@ -23,10 +23,12 @@ import javax.swing.SwingUtilities;
  * @author schnitzel
  */
 public class StartPanel extends JPanel{
-    private Container parent;
+    //private Container parent;
+    private Quiz quiz;
     
-    public StartPanel(Container parent){
-        this.parent = parent;
+    public StartPanel(){
+        //this.parent = parent;
+        this.quiz = quiz;
         final int rows = 7;
         
         //JPanel myPane = new JPanel();
@@ -70,14 +72,10 @@ public class StartPanel extends JPanel{
         grid[6].add(btnStartQuiz);
         
         btnStartQuiz.addActionListener((ActionEvent e) -> {
-            parent.remove(0);
-            parent.add(new CategoriesPanel(parent));
-            SwingUtilities.updateComponentTreeUI(parent);
+            /*parent.remove(0);
+            parent.add(new CategoriesPanel(parent, new Quiz()));
+            SwingUtilities.updateComponentTreeUI(parent);*/
+            Start.showCatPanel(new CategoriesPanel(new Quiz()));
         });
-        
-        /*super.setVisible(true);
-        super.setSize(800, 600);
-        super.setLocationRelativeTo(null);
-        super.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
     }
 }

@@ -25,10 +25,12 @@ import javax.swing.border.EtchedBorder;
  * @author schnitzel
  */
 public class CategoriesPanel extends JPanel{
-    private Container parent;
+    //private Container parent;
+    private Quiz quiz;
     
-    public CategoriesPanel(Container parent){
-        this.parent = parent;
+    public CategoriesPanel(Quiz quiz){
+        //this.parent = parent;
+        this.quiz = quiz;
         final int rows = 3;
         final int cols = 3;
         final int gap = 30;
@@ -54,7 +56,7 @@ public class CategoriesPanel extends JPanel{
         btnBack.addActionListener((ActionEvent e) -> {
                 Object[] options = {"Quit",
                                     "Stay"};
-                int n = JOptionPane.showOptionDialog(parent,
+                int n = JOptionPane.showOptionDialog(this,
                     "Really Quit?",
                     "A Simple Question",
                     JOptionPane.YES_NO_OPTION,
@@ -63,21 +65,18 @@ public class CategoriesPanel extends JPanel{
                     options,
                     options[1]);
                 if(n==0){
-                    parent.remove(0);
-                    parent.add(new StartPanel(parent));
-                    SwingUtilities.updateComponentTreeUI(parent);
+                    Start.showStartPanel();
                 }
             });
         
         JButton[] grid = new JButton[rows*cols];
         for(int i = 0; i < grid.length; i++){
             grid[i] = new JButton("<html><font size='18' color='white'>cat "+i+"</font></html>");
-            grid[i].setBackground(new Color(1-i*1.0f/grid.length, 0.1f, i*1.0f/grid.length));
+            grid[i].setBackground(new Color((196*i)%256, (int)(196*(i*2.4))%256, (int)(196*(i*0.6+1))%256));//(1-i*1.0f/grid.length, 0.1f, i*1.0f/grid.length));
             mainPane.add(grid[i]);
+            final int index = i;
             grid[i].addActionListener((ActionEvent e) -> {
-                parent.remove(0);
-                parent.add(new QuestionPanel(parent));
-                SwingUtilities.updateComponentTreeUI(parent);
+                Start.showQPanel(new QuestionPanel(quiz.getQuestion(index)));
             });
         }
         
