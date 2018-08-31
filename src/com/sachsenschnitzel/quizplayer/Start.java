@@ -14,7 +14,7 @@ public class Start{
     public static void main(String[] args){
         JFrame frame = new JFrame();
         contentPane = frame.getContentPane();
-        contentPane.add(new StartPanel());
+        contentPane.add(startPanel = new StartPanel());
         
         frame.setTitle("QuizPlayer");
         frame.setVisible(true);
@@ -44,6 +44,8 @@ public class Start{
     public static void showCatPanel(){
         contentPane.remove(0);
         contentPane.add(catPanel);
+        SwingUtilities.updateComponentTreeUI(contentPane);
+        catPanel.resume();
         SwingUtilities.updateComponentTreeUI(contentPane);
     }
     

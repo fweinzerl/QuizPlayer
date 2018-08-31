@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,8 +28,7 @@ public class StartPanel extends JPanel{
     private Quiz quiz;
     
     public StartPanel(){
-        //this.parent = parent;
-        this.quiz = quiz;
+        //this.quiz = quiz;
         final int rows = 7;
         
         //JPanel myPane = new JPanel();
@@ -75,7 +75,10 @@ public class StartPanel extends JPanel{
             /*parent.remove(0);
             parent.add(new CategoriesPanel(parent, new Quiz()));
             SwingUtilities.updateComponentTreeUI(parent);*/
-            Start.showCatPanel(new CategoriesPanel(new Quiz()));
+            String path = fileField.getText(), team1 = name1.getText(), team2 = name2.getText();
+            Start.showCatPanel(new CategoriesPanel(new Quiz(new File(path.equals("")?"example/easyquiz/easyquiz.xml":path)),
+                                                    team1.equals("")?"Team 1":team1,
+                                                    team2.equals("")?"Team 2":team2));
         });
     }
 }
