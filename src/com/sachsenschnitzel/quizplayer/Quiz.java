@@ -61,10 +61,10 @@ public class Quiz{
                         Node questionNode = questionList.item(j);
                         if (questionNode.getNodeType() == Node.ELEMENT_NODE) {
                             Element question = (Element) questionNode;
-                            System.out.println("Q: " + question.getAttribute("text"));
+                            //System.out.println("Q: " + question.getAttribute("text"));
 
                             NodeList answerList = category.getElementsByTagName("answer");
-                            System.out.println(((Element)answerList.item(0)).getAttribute("text"));
+                            //System.out.println(((Element)answerList.item(0)).getAttribute("text"));
                             
                             questions[i][0] = new Question(question.getAttribute("text"),
                                     ((Element)answerList.item(0)).getAttribute("text"),

@@ -44,7 +44,7 @@ public class StartPanel extends JPanel{
             super.add(grid[i]);
         }
         
-        JLabel title = new JLabel(" Oag schweres Quiz ");
+        JLabel title = new JLabel(" Super-Quiz ");
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 30));
         title.setBackground(new Color(0.6f, 0.6f, 0.9f));
         title.setOpaque(true);
@@ -62,7 +62,7 @@ public class StartPanel extends JPanel{
         grid[4].add(new JLabel("Team 2: "));
         grid[4].add(name2);
         JTextField fileField = new JTextField(17);
-        grid[5].add(new JLabel("Quiz-Data: "));
+        grid[5].add(new JLabel("Quiz-Daten: "));
         grid[5].add(fileField);
         JButton btnStartQuiz = new JButton("->");
         btnStartQuiz.setBackground(new Color(0f, 0f, 0.25f));

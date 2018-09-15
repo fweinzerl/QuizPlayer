@@ -66,11 +66,11 @@ public class CategoriesPanel extends JPanel{
         btnBack.setBackground(new Color(0.9f, 0.1f, 0.1f));
         backPane.add(btnBack);
         btnBack.addActionListener((ActionEvent e) -> {
-                Object[] options = {"Quit",
-                                    "Stay"};
+                Object[] options = {"Wirklich beenden.",
+                                    "Bleiben"};
                 int n = JOptionPane.showOptionDialog(this,
-                    "Really Quit?",
-                    "A Simple Question",
+                    "Wirklich beenden?",
+                    "Eine einfache Frage",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
@@ -148,16 +148,16 @@ public class CategoriesPanel extends JPanel{
         if(round==9){
             String winText;
             if(score1 > score2)
-                winText = name1.toUpperCase() + " HAS WON";
+                winText = name1.toUpperCase() + " HAT GEWONNEN";
             else if(score2 > score1)
-                winText = name2.toUpperCase() + " HAS WON";
+                winText = name2.toUpperCase() + " HAT GEWONNEN";
             else
-                winText = "It's a tie! Maybe next time.";
-            Object[] options = {"Restart!",
-                                    "Exit"};
+                winText = "Unentschieden! Nächstes Mal vielleicht.";
+            Object[] options = {"Nochmal!",
+                                    "Beenden"};
             int n = JOptionPane.showOptionDialog(this,
                 winText,
-                "Congratulations!",
+                "Glückwunsch!",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
